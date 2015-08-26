@@ -1,0 +1,93 @@
+#!/usr/bin/env python
+"""Find and concatenate all the rule files into one readable output.
+"""
+# n.b.: This shows any file, not just ones committed in git, which would
+# require parsing output from git ls-files or something.
+# This doesn't show files in subdirectories.
+# This won't show anything that doesn't have a .md extension.
+# This is supposed to generate valid markdown, but that depends on the
+# rule files.
+import os
+import re
+
+
+_FILENAME_RE = re.compile(r'(\d+)_(.*)\.md')
+
+
+def file_paths_under(root):
+    """Yield paths of files under the given root.
+    """
+    for filename in sorted(os.listdir(root)):
+        full_path = os.path.join(root, filename)
+        # n.b.: lots of checks against filesystem.
+        if os.path.isfile(full_path):
+            yield full_path
+
+
+def files(file_paths):
+    """Yield file objects for the given file paths.
+    """
+    # n.b.: no error handling if files don't exist or can't be opened.
+    for file_path in file_paths:
+        with open(file_path, "r") as file_obj:
+            yield file_obj
+
+
+def parse_path(filename):
+    """Extract rule number and title from given path to rule file.
+    """
+    basename = os.path.basename(filename)
+    match = _FILENAME_RE.match(basename)
+    if not match:
+        return None
+    number = match.group(1)
+    words = [word.capitalize() for word in match.group(2).split("-")]
+    title = " ".join(words)
+    return number, title
+
+
+def render_dir(root):
+    """Yield lines presenting rule files in the given directory.
+    """
+    for file_obj in files(file_paths_under(root)):
+        parsed = parse_path(file_obj.name)
+        # n.b.: parsed may be None and fail to unpack here.
+        number, title = parsed
+        content = file_obj.read().rstrip()
+        title_line = "{0}. {1}".format(number, title)
+        yield ""
+        yield title_line
+        yield "-" * len(title_line)
+        yield ""
+        yield content
+
+
+def render_section(root, title):
+    """Add a title to the output of render_dir.
+    """
+    yield title
+    yield "=" * len(title)
+    for line in render_dir(root):
+        yield line
+
+
+def main():
+    """What happens when the script is run
+    """
+    this_file = os.path.abspath(__file__)
+    here = os.path.dirname(this_file)
+    parent = os.path.dirname(here)
+    immutable_rule_dir = os.path.join(parent, 'immutable_rules')
+    mutable_rule_dir = os.path.join(parent, 'mutable_rules')
+
+    for line in render_section(immutable_rule_dir, "Immutable Rules"):
+        print(line)
+
+    print("")
+
+    for line in render_section(mutable_rule_dir, "Mutable Rules"):
+        print(line)
+
+
+# This is a script file, so __name__ stuff is not useful.
+main()
