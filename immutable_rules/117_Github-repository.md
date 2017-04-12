@@ -24,4 +24,4 @@ Pull Requests must perform exactly one of the following actions:
 
 The proper way to propose a rule-change is a Pull Request. Players vote on Pull
 Requests/proposals by putting either "+1" or "-1" as a comment on the Pull
-Request.
+Request, or by using the proper :thumbsup: or :thumbsdown: emoji on the Pull Request comment.

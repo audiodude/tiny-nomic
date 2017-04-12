@@ -8,4 +8,4 @@ goes first and play passes to each player in increasing numeric order of his or
 her assigned number.
 
 Turns may not be skipped or passed, and parts of turns may not be omitted. All
-players begin with zero points, which should be reflected in their player files.
+players begin with zero points, which (if the game is being played on Github) should be reflected in their player files.
