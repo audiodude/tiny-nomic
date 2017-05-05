@@ -1,0 +1,3 @@
+The order of turns is determined by taking the numeric part of the name of each file in the `players/` directory and assigning it to the player corresponding to the file. The player with the lowest number goes first. At the end of a player's turn, the next player to take a turn shall be the player with the next highest number. If there is no higher number, the next round begins with the player with the lowest number.
+
+Turns may not be skipped or passed, and parts of turns may not be omitted. All players begin with zero points, which (if the game is being played on Github) should be reflected in their player files.
