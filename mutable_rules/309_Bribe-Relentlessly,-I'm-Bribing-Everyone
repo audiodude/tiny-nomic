@@ -1,0 +1,7 @@
+Bribe Relentlessly, I'm Bribing Everyone
+
+Before voting has finished, the current Proposer of a rule change may spend a number of their points in return for a vote. We shall call the person that the proposer is attempting to bribe "The Potentially Corrupt One".
+
+To do this, the Proposer must state in comments "[name of player], I would like you to vote [in this way] for [this number of points]" where the items in square brackets are filled out by the Proposer as required. The offer cannot be changed or revoked once it has been made.
+
+If The Potentially Corrupt One accepts the bribe (by stating in comments "I accept your bribe") and then votes in the way specified, the number of points stated are immediately taken from the Proposer's player file, and added to The Potentially Corrupt One's player file.
