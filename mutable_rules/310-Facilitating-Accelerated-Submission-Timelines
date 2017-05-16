@@ -1,0 +1,11 @@
+# Facilitating Accelerated Submission Timelines
+
+To ensure a reasonable speed of operation of the rules of the game, the following changes and clarifications are made:
+
+(1.a) A turn is considered to end, and the next turn (and its timer) begin, as soon as the vote on the previous turn concludes (or is forfeit by the rules in TIMER)
+
+(1.b) In any instance where a player's score is expected to change, they should have the first opportunity to submit a pull request indicating as such; if they do not submit a pull request indicating the change within 12 hours, any player is allowed to submit the relevant pull request.
+
+(1.c) In any case other than a successful vote where a pull request should be merged by the rules, any player other than the player who submitted the pull request may merge the request.  In the case of a successful vote, any player may confirm the tally and its success and any player other than the player who confirmed the successful vote may merge the request.
+
+(1.d) Any player who merges a pull request improperly (either as a violation of this rule or as a violation of any other rule, such as 117) shall receive a penalty of 2 points.
