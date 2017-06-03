@@ -22,6 +22,11 @@ Pull Requests must perform exactly one of the following actions:
    materially affect the operation of the rules or the game. An example of this
    would be removing or replacing the LICENSE or README files.
 
+Pull Requests must:
+
+1. Have no lines in the affected file(s) that have a width of greater than 79.
+
 The proper way to propose a rule-change is a Pull Request. Players vote on Pull
 Requests/proposals by putting either "+1" or "-1" as a comment on the Pull
-Request, or by using the proper :thumbsup: or :thumbsdown: emoji on the Pull Request comment.
+Request, or by using the proper :thumbsup: or :thumbsdown: emoji on the Pull
+Request comment.
