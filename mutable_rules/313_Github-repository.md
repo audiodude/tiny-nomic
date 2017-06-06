@@ -29,5 +29,7 @@ Pull Requests must perform exactly one of the following actions:
    valid rule other than this one.
 
 The proper way to propose a rule-change is a Pull Request. Players vote on Pull
-Requests/proposals by putting either "+1" or "-1" as a comment on the Pull
-Request.
+Requests/proposals by putting either :+1: (for an affirmative vote) or :-1:
+(for a negative vote) as whole or part of a comment on the Pull Request. Any
+comment that does not contain one of these emoji is not considered a proper
+vote.
