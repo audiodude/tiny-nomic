@@ -1,0 +1,60 @@
+#!/bin/python3
+"""
+
+Run this script with the number of the most recently closed rule PR as
+its argument.
+
+Example:
+
+    ./tools/timer 42
+
+"""
+
+
+import os
+import sys
+import datetime
+from itertools import cycle
+import requests
+
+# TODO if given pr is not closed, print the other FAST/TIMER deadlines.
+
+def main(argv0, pr_number):
+    pr = requests.get("https://api.github.com/repos/audiodude/tiny-nomic/issues/{}".format(pr_number)).json()
+    if not pr['state'] == "closed":
+        raise SystemExit("That PR is not closed, I don't know what to do.")
+    last_player = pr['user']['login']
+    now = datetime.datetime.now(datetime.timezone.utc)
+    deadline = datetime.datetime.strptime(pr['closed_at'].replace('Z','+0000'), '%Y-%m-%dT%H:%M:%S%z') # 2017-06-17T23:09:53Z
+    players = [p[4:] for p in sorted(os.listdir("players"))]
+    assert last_player in players
+    players = cycle(players)
+    print("The time is now {:%b %d, %I:%M%p}.".format(now.astimezone()))
+    print()
+    print("{:>10s}'s PR#{} was closed at    {:%b %d, %I:%M%p}.".format(
+        last_player,
+        pr_number,
+        deadline.astimezone(),
+        ))
+    for player in players:
+        if player == last_player:
+            break
+    for player in players:
+        deadline += datetime.timedelta(hours=48)
+        delta = deadline - now
+        if delta.days < 0:
+            print("{:>10s} forfeited their turn at  {:%b %d, %I:%M%p}.".format(
+                player, deadline.astimezone()))
+        else:
+            print("{player:>10s} must begin their turn by {deadline:%b %d, %I:%M%p}. ({days}{hours:.0f} hours from now).".format(
+                player=player,
+                deadline=deadline.astimezone(),
+                days="%d days plus " % delta.days if delta.days else "",
+                hours=delta.seconds/60/60))
+        if player == last_player:
+            break
+    print()
+    print("Note that these deadlines update every time someone takes a turn.")
+
+if __name__ == '__main__':
+    main(*sys.argv)
