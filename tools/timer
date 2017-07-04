@@ -1,0 +1,142 @@
+#!/bin/python3
+"""
+
+Run this script with the number of the most player's PR as its argument.
+
+Example:
+
+    ./tools/timer 42
+
+"""
+
+
+import os
+import sys
+import datetime
+from itertools import cycle, dropwhile, count
+from textwrap import fill, dedent
+import requests
+
+# TODO analyze git log to automatically determine the most recently
+# opened rule-change PR.
+
+def blocktext(s):
+    """Given a block of indented text containing multiple paragraphs,
+    dedent and re-wrap it.
+
+    """
+    return '\n\n'.join(fill(p) for p in dedent(s).split('\n\n') if p)
+
+def gh_timestamp(ds):
+    """Convert a GitHub API timestamp to a timezone-aware datetime"""
+    # GH timestamp looks like 2017-06-17T23:09:53Z
+    return datetime.datetime.strptime(
+            ds.replace('Z','+0000'),
+            '%Y-%m-%dT%H:%M:%S%z')
+
+def get_times(pr):
+    """Analyze the PR information returned from the GitHub API and
+    return a dict of Python datestamps.
+
+    pr should be a Python dict, converted from JSON.
+    players should be a python list, in player order.
+
+    """
+    if pr['state'] not in ['open', 'closed']:
+        raise ValueError("That PR is neither open nor closed.")
+
+    players = [p[4:] for p in sorted(os.listdir("players"))]
+    pr_author = pr['user']['login']
+
+    if pr_author not in players:
+        raise ValueError("That PR is not authored by a player I know.")
+
+    now = datetime.datetime.now(datetime.timezone.utc).astimezone()
+
+    created_at = gh_timestamp(pr['created_at']).astimezone()
+    discussion_closes = created_at + datetime.timedelta(hours=24)
+    voting_closes = discussion_closes + datetime.timedelta(hours=24)
+
+    # if it's not closed yet, closed_at is an estimate of when voting
+    # ends and it should close.
+    if pr['state'] == 'open':
+        closed_at = voting_closes
+    elif pr['state'] == "closed":
+        closed_at = gh_timestamp(pr['closed_at']).astimezone()
+
+    # a ring of players starting with the pr author
+    players = dropwhile(lambda x: x != pr_author, cycle(players))
+    # an infinite iterable of players and their deadlines, if nothing changes
+    # count() for some reason insists on numbers as arguments :-/
+    deadlines = zip(players, (closed_at + datetime.timedelta(hours=48) * i for i in count()))
+    # the first deadline we already know, the pr author. pop them off
+    next(deadlines)
+
+    return {
+        'state': pr['state'],
+        'now': now,
+        'number': pr['number'],
+        'player': pr_author,
+        'created_at': created_at,
+        'discussion_closes': discussion_closes,
+        'voting_closes': voting_closes,
+        'closed_at': closed_at,
+        'deadlines': deadlines,
+        }
+
+def main(argv0, pr_number):
+    pr = requests.get("https://api.github.com/repos/audiodude/tiny-nomic/issues/{}".format(pr_number)).json()
+    times = get_times(pr)
+
+    print("The time is now {now:%b %d, %I:%M%p}.".format(**times))
+    print()
+    print("{player:>12s} opened PR #{number}, beginning their turn, at {created_at:%b %d, %I:%M%p}.".format(**times))
+    if times['now'] < times['discussion_closes']:
+        delta = times['discussion_closes'] - times['now']
+        print("    * Discussion is open.")
+        print("    * Voting will begin at {discussion_closes:%b %d, %I:%M%p}. ({days}{hours:.0f}h from now)".format(
+            days="%dd + " % delta.days if delta.days else "",
+            hours=delta.seconds/60/60,
+            **times))
+        print("    * Voting must conclude before {closed_at:%b %d, %I:%M%p}.".format(**times))
+    elif times['now'] < times['closed_at']:
+        delta = times['closed_at'] - times['now']
+        print("    * Discussion is closed. Voting began at {discussion_closes:%b %d, %I:%M%p}.".format(**times))
+        print("    * Voting must conclude before {closed_at:%b %d, %I:%M%p}. ({days}{hours:.0f}h from now)".format(
+            days="%dd + " % delta.days if delta.days else "",
+            hours=delta.seconds/60/60,
+            **times))
+    else:
+        print("    * Discussion is closed. Voting began at {discussion_closes:%b %d, %I:%M%p}.".format(**times))
+        print("    * Voting concluded and the PR was closed.".format(**times))
+        print("{player:>12s}'s turn ended {closed_at:%b %d, %I:%M%p}.".format(**times))
+
+    future_deadlines_shown = 0
+    for player, deadline in times['deadlines']:
+        delta = deadline - times['now']
+        if delta.days < 0:
+            print("{:>12s} forfeited their turn at  {:%b %d, %I:%M%p}.".format(
+                player, deadline))
+        else:
+            future_deadlines_shown += 1
+            print("{player:>12s} must begin their turn between then and {deadline:%b %d, %I:%M%p}. ({days}{hours:.0f}h from now).".format(
+                player='@' + player,
+                deadline=deadline,
+                days="%dd + " % delta.days if delta.days else "",
+                hours=delta.seconds/60/60))
+        if future_deadlines_shown >= 10:
+            break
+
+    print()
+    print(blocktext("""\
+        Note that deadlines move up whenever voting closes or someone
+        begins their turn; please re-run this script whenever that
+        happens.
+
+        Note that deadlines might get postponed due to Judgements; this
+        script does not take that into account.
+        """
+        ))
+
+if __name__ == '__main__':
+    main(*sys.argv)
