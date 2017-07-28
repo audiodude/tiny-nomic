@@ -47,13 +47,6 @@ A proposal is acceptable under any of the following three criteria:
     - Players who have not declared their vote give an implicit vote of "abstain".
     - For the purpose of calculating reward given in _Parts of a turn_: "the fraction of favorable votes" is the number of favorable votes over the number of voting players. (I.e. implicit abstain votes are _not_ included in the denominator.)
 
-3. A majority _of all players_ have voted in favor (not all players need to have voted), and the proposal is _between 24 and 48 hours old_, and its proponent approves.
-
-    - Only the proposing player may approve this method of determining acceptability for any given proposal. (They may state this approval in a comment, or indicate it by performing the merge during their turn within this time window, under these conditions.)
-    - Players who have not declared their vote give an implicit vote against.
-    - Implicit votes incur the same consequences (such as that given in _Points for Dissent_) as normal votes do for proposals accepted (PRs merged) of this age.
-    - For the purpose of calculating reward given in _Parts of a turn_: "the fraction of favorable votes" is the number of favorable votes over the total number of players. (I.e. implicit against votes are included in the denominator.)
-
 Otherwise, a proposal is unacceptable.
 
 ## During a player's turn
