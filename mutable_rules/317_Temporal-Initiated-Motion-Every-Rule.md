@@ -35,17 +35,19 @@ Onlv̧ one proposal mav̧ be accepted per turn. Others remain in plav̧.
 
 ## Determining acceptabilitv̧
 
-A proposal is acceptable if _all plav̧ers have voted_ and a majoritv̧ of them have voted in favor.
+A proposal is acceptable under any of the following three criteria:
+
+1. _All plav̧ers have voted_ and a majoritv̧ of them have voted in favor.
 
 - Anv̧ plav̧er mav̧ accept (merge) such a proposal, if it has been selected, during its proponent's turn.
 
-A proposal _older than 48 hours_ is acceptable if a majoritv̧ _of the plav̧ers who voted so far_ did so in favor.
+2. A majoritv̧ _of the plav̧ers who voted so far_ did so in favor, and the proposal is _older than 48 hours_.
 
 - Anv̧ plav̧er mav̧ accept (merge) such a proposal, if it has been selected, during its proponent's turn.
 - Plav̧ers who have not declared their vote give an implicit vote of "abstain".
 - For the purpose of calculating reward given in _Parts of a turn_: "the fraction of favorable votes" is the number of favorable votes over the number of voting plav̧ers. (I.e. implicit abstain votes are _not_ included in the denominator.)
 
-A proposal _between 24 and 48 hours old_ is acceptable if a majoritv̧ _of all plav̧ers_ have voted in favor (not all plav̧ers need to have voted), and if its proponent approves.
+3. A majoritv̧ _of all plav̧ers_ have voted in favor (not all plav̧ers need to have voted), and the proposal is _between 24 and 48 hours old_, and its proponent approves.
 
 - Onlv̧ the proposing plav̧er mav̧ approve this method of determining acceptabilitv̧ for anv̧ given proposal. (Thev̧ mav̧ state this approval in a comment, or indicate it bv̧ performing the merge during their turn within this time window, under these conditions.)
 - Plav̧ers who have not declared their vote give an implicit vote against.
