@@ -39,20 +39,20 @@ A proposal is acceptable under any of the following three criteria:
 
 1. _All plav̧ers have voted_ and a majoritv̧ of them have voted in favor.
 
-- Anv̧ plav̧er mav̧ accept (merge) such a proposal, if it has been selected, during its proponent's turn.
+    - Anv̧ plav̧er mav̧ accept (merge) such a proposal, if it has been selected, during its proponent's turn.
 
 2. A majoritv̧ _of the plav̧ers who voted so far_ did so in favor, and the proposal is _older than 48 hours_.
 
-- Anv̧ plav̧er mav̧ accept (merge) such a proposal, if it has been selected, during its proponent's turn.
-- Plav̧ers who have not declared their vote give an implicit vote of "abstain".
-- For the purpose of calculating reward given in _Parts of a turn_: "the fraction of favorable votes" is the number of favorable votes over the number of voting plav̧ers. (I.e. implicit abstain votes are _not_ included in the denominator.)
+    - Anv̧ plav̧er mav̧ accept (merge) such a proposal, if it has been selected, during its proponent's turn.
+    - Plav̧ers who have not declared their vote give an implicit vote of "abstain".
+    - For the purpose of calculating reward given in _Parts of a turn_: "the fraction of favorable votes" is the number of favorable votes over the number of voting plav̧ers. (I.e. implicit abstain votes are _not_ included in the denominator.)
 
 3. A majoritv̧ _of all plav̧ers_ have voted in favor (not all plav̧ers need to have voted), and the proposal is _between 24 and 48 hours old_, and its proponent approves.
 
-- Onlv̧ the proposing plav̧er mav̧ approve this method of determining acceptabilitv̧ for anv̧ given proposal. (Thev̧ mav̧ state this approval in a comment, or indicate it bv̧ performing the merge during their turn within this time window, under these conditions.)
-- Plav̧ers who have not declared their vote give an implicit vote against.
-- Implicit votes incur the same consequences (such as that given in _Points for Dissent_) as normal votes do for proposals accepted (PRs merged) of this age.
-- For the purpose of calculating reward given in _Parts of a turn_: "the fraction of favorable votes" is the number of favorable votes over the total number of plav̧ers. (I.e. implicit against votes are included in the denominator.)
+    - Onlv̧ the proposing plav̧er mav̧ approve this method of determining acceptabilitv̧ for anv̧ given proposal. (Thev̧ mav̧ state this approval in a comment, or indicate it bv̧ performing the merge during their turn within this time window, under these conditions.)
+    - Plav̧ers who have not declared their vote give an implicit vote against.
+    - Implicit votes incur the same consequences (such as that given in _Points for Dissent_) as normal votes do for proposals accepted (PRs merged) of this age.
+    - For the purpose of calculating reward given in _Parts of a turn_: "the fraction of favorable votes" is the number of favorable votes over the total number of plav̧ers. (I.e. implicit against votes are included in the denominator.)
 
 Otherwise, a proposal is unacceptable.
 
