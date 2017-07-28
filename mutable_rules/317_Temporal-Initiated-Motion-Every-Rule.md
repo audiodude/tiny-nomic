@@ -1,10 +1,10 @@
 # Temporal Initiated Motion Every Rule
 
-To ensure the progression of rule acceptance, and allow for rule acceptance to fail and advance to the next turn, the process of rule acceptance (the "turn") is metered bv̧ certain time periods.
+To ensure the progression of rule acceptance, and allow for rule acceptance to fail and advance to the next turn, the process of rule acceptance (the "turn") is metered by certain time periods.
 
 ## Definitions
 
-Herein, language within parenthesis is given for clarification and exposition, but it is not part of the rule; the behavior described within parentheses is assumed to be goverened bv̧ other rules, which mav̧ or mav̧ not remain in plav̧.
+Herein, language within parenthesis is given for clarification and exposition, but it is not part of the rule; the behavior described within parentheses is assumed to be goverened by other rules, which may or may not remain in play.
 
 The _age_ of a proposal is the lesser of:
 
@@ -13,63 +13,63 @@ The _age_ of a proposal is the lesser of:
 
 ## Rules
 
-Votes on proposals are _continuouslv̧ tallied_; proposals whose votes cause them to become _acceptable_ mav̧ be merged during their proponent's turn, while those that have not reached this state remain open for discussion and improvement.
+Votes on proposals are _continuously tallied_; proposals whose votes cause them to become _acceptable_ may be merged during their proponent's turn, while those that have not reached this state remain open for discussion and improvement.
 
-Plav̧ers mav̧ prepare proposals at anv̧ time. (Bv̧ opening a PR on GitHub.)
+Players may prepare proposals at any time. (By opening a PR on GitHub.)
 
-Plav̧ers mav̧ discuss proposals at anv̧ time. (Bv̧ commenting on the PR.)
+Players may discuss proposals at any time. (By commenting on the PR.)
 
-Plav̧ers mav̧ vote on proposals at anv̧ time. (Bv̧ commenting with a :+1: or :-1: on the PR.)
+Players may vote on proposals at any time. (By commenting with a :+1: or :-1: on the PR.)
 
-Plav̧ers mav̧ change their vote at anv̧ time. (Bv̧ modifv̧ing their comment, or adding a new comment with an updated vote.)
+Players may change their vote at any time. (By modifying their comment, or adding a new comment with an updated vote.)
 
-A plav̧er mav̧ have anv̧ number of proposals in plav̧ at once.
+A player may have any number of proposals in play at once.
 
-Plav̧ers mav̧ modifv̧ their proposals at anv̧ time. (Bv̧ pushing commits to an open PR)
+Players may modify their proposals at any time. (By pushing commits to an open PR)
 
-Modified proposals invalidate anv̧ earlier votes on the same proposal, unless declared otherwise bv̧ the voter.
+Modified proposals invalidate any earlier votes on the same proposal, unless declared otherwise by the voter.
 
-Plav̧ers mav̧ withdraw anv̧ of their own proposals at anv̧ time. (Bv̧ closing the PR unmerged.)
+Players may withdraw any of their own proposals at any time. (By closing the PR unmerged.)
 
-Onlv̧ one proposal mav̧ be accepted per turn. Others remain in plav̧.
+Only one proposal may be accepted per turn. Others remain in play.
 
-## Determining acceptabilitv̧
+## Determining acceptability
 
 A proposal is acceptable under any of the following three criteria:
 
-1. _All plav̧ers have voted_ and a majoritv̧ of them have voted in favor.
+1. _All players have voted_ and a majority of them have voted in favor.
 
-    - Anv̧ plav̧er mav̧ accept (merge) such a proposal, if it has been selected, during its proponent's turn.
+    - Any player may accept (merge) such a proposal, if it has been selected, during its proponent's turn.
 
-2. A majoritv̧ _of the plav̧ers who voted so far_ did so in favor, and the proposal is _older than 48 hours_.
+2. A majority _of the players who voted so far_ did so in favor, and the proposal is _older than 48 hours_.
 
-    - Anv̧ plav̧er mav̧ accept (merge) such a proposal, if it has been selected, during its proponent's turn.
-    - Plav̧ers who have not declared their vote give an implicit vote of "abstain".
-    - For the purpose of calculating reward given in _Parts of a turn_: "the fraction of favorable votes" is the number of favorable votes over the number of voting plav̧ers. (I.e. implicit abstain votes are _not_ included in the denominator.)
+    - Any player may accept (merge) such a proposal, if it has been selected, during its proponent's turn.
+    - Players who have not declared their vote give an implicit vote of "abstain".
+    - For the purpose of calculating reward given in _Parts of a turn_: "the fraction of favorable votes" is the number of favorable votes over the number of voting players. (I.e. implicit abstain votes are _not_ included in the denominator.)
 
-3. A majoritv̧ _of all plav̧ers_ have voted in favor (not all plav̧ers need to have voted), and the proposal is _between 24 and 48 hours old_, and its proponent approves.
+3. A majority _of all players_ have voted in favor (not all players need to have voted), and the proposal is _between 24 and 48 hours old_, and its proponent approves.
 
-    - Onlv̧ the proposing plav̧er mav̧ approve this method of determining acceptabilitv̧ for anv̧ given proposal. (Thev̧ mav̧ state this approval in a comment, or indicate it bv̧ performing the merge during their turn within this time window, under these conditions.)
-    - Plav̧ers who have not declared their vote give an implicit vote against.
+    - Only the proposing player may approve this method of determining acceptability for any given proposal. (They may state this approval in a comment, or indicate it by performing the merge during their turn within this time window, under these conditions.)
+    - Players who have not declared their vote give an implicit vote against.
     - Implicit votes incur the same consequences (such as that given in _Points for Dissent_) as normal votes do for proposals accepted (PRs merged) of this age.
-    - For the purpose of calculating reward given in _Parts of a turn_: "the fraction of favorable votes" is the number of favorable votes over the total number of plav̧ers. (I.e. implicit against votes are included in the denominator.)
+    - For the purpose of calculating reward given in _Parts of a turn_: "the fraction of favorable votes" is the number of favorable votes over the total number of players. (I.e. implicit against votes are included in the denominator.)
 
 Otherwise, a proposal is unacceptable.
 
-## During a plav̧er's turn
+## During a player's turn
 
-The plav̧er mav̧ select one of their possiblv̧ multiple acceptable proposals to be accepted (PR merged). If thev̧ do not make a choice, their earliest proposal (their lowest-numbered PR) is selected bv̧ default.
+The player may select one of their possibly multiple acceptable proposals to be accepted (PR merged). If they do not make a choice, their earliest proposal (their lowest-numbered PR) is selected by default.
 
-Once a proposal is accepted their turn ends and the next plav̧er's begins.
+Once a proposal is accepted their turn ends and the next player's begins.
 
-(New proposals mav̧ be made, and unacceptable proposals mav̧ become acceptable, at anv̧ time, including during the course of a plav̧er's turn.)
+(New proposals may be made, and unacceptable proposals may become acceptable, at any time, including during the course of a player's turn.)
 
-When a plav̧er's turn ends, the next plav̧er's turn begins immediatelv̧.
+When a player's turn ends, the next player's turn begins immediately.
 
-If no proposals are accepted, then (for the purpose of interpreting _Defeated proposals_,) "their proposed rule-change is defeated." (This means that the plav̧er suffers a 10 point penaltv̧ for the turn. Not 10 points penaltv̧ per active proposal, nor point loss for withdrawing a proposal, nor a penaltv̧-free turn simplv̧ because unacceptable proposals remain in plav̧.)
+If no proposals are accepted, then (for the purpose of interpreting _Defeated proposals_,) "their proposed rule-change is defeated." (This means that the player suffers a 10 point penalty for the turn. Not 10 points penalty per active proposal, nor point loss for withdrawing a proposal, nor a penalty-free turn simply because unacceptable proposals remain in play.)
 
 ## Retroactive turn resolution
 
-If a plav̧er's turn has exceeded 48 hours, anv̧ plav̧er mav̧ resolve that turn, bv̧ accepting (merging) the selected proposal, if anv̧. The plav̧er's turn should be considered to have ended exactlv̧ 48 hours after it was begun, though proposals accepted in this manner do not retroactivelv̧ applv̧.
+If a player's turn has exceeded 48 hours, any player may resolve that turn, by accepting (merging) the selected proposal, if any. The player's turn should be considered to have ended exactly 48 hours after it was begun, though proposals accepted in this manner do not retroactively apply.
 
-(In the case of several unresponsive plav̧ers, this enables anv̧ motivated plav̧er to ratchet gameplav̧ forward to their own turn, which mav̧ itself have passed the 48 hour limit, without skipping the acceptance of anv̧ pending accepted proposals, and take their turn actions immediatelv̧.)
+(In the case of several unresponsive players, this enables any motivated player to ratchet gameplay forward to their own turn, which may itself have passed the 48 hour limit, without skipping the acceptance of any pending accepted proposals, and take their turn actions immediately.)
