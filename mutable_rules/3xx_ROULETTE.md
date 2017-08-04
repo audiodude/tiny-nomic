@@ -1,6 +1,6 @@
 # Randomly Occuring Upsets Let Even Trailing Troublemakers Excel
 
-In a game played on GitHub, an _upset_ occurs when the merge commit for a recently accepted rule-change begins with `0`.
+In a game played on GitHub, an _upset_ occurs when the merge commit hash for a recently accepted rule-change begins with `0`.
 
 In an offline game, flip a fair coin four times after every accepted rule-change proposal. An _upset_ occurs if it shows heads for all four flips.
 
